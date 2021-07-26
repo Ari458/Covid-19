@@ -16,11 +16,11 @@ function Main() {
                 <h3 className="tracker">COVID-19 TRACKER INDIA</h3>
                 <div className="link">
                     <Router>
-                    <Link to="/Covid" className="india">
+                    <Link to="/Covid-19" className="india">
                         <span>IN</span><span>D</span><span>IA</span>
                         </Link>
                          <span className="br">|</span> 
-                         <Link to="/State" className="states">STATES</Link>
+                         <Link to="/Covid-19" className="states">STATES</Link>
 
                          <Switch>
                             <Route path="/Covid"><Covid/></Route>
