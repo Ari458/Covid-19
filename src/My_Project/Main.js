@@ -20,7 +20,7 @@ function Main() {
                         <span>IN</span><span>D</span><span>IA</span>
                         </Link>
                          <span className="br">|</span> 
-                         <Link to="/Covid-19" className="states">STATES</Link>
+                         <Link to="//State" className="states">STATES</Link>
 
                          <Switch>
                             <Route path="/Covid"><Covid/></Route>
