@@ -1,16 +1,19 @@
+
 import React, { useEffect, useState } from 'react';
 import '../My_Project/Box.css';
 
 
 function Box() {
 
-    const[data,setdata]= useState([]);
+    const[data_1,setdata_1]= useState([]);
+    const[data_2,setdata_2]= useState([]);
 
     const getCovidData= async()=>{
         try{
             const Response= await fetch('https://api.covid19india.org/data.json');
             const MyData=await Response.json();
-            setdata(MyData.cases_time_series[MyData.cases_time_series.length-1]);
+            setdata_1(MyData.cases_time_series[MyData.cases_time_series.length-1]);
+            setdata_2(MyData.statewise[0]);
         }catch(err){
                 console.log(err);
         }
@@ -21,6 +24,8 @@ function Box() {
         getCovidData();
     },[]);
 
+    
+
 
     return (
          < > 
@@ -29,7 +34,7 @@ function Box() {
                                 #Today Confirmed
                         </div> 
                         <div className="data">
-                                {data.dailyconfirmed}
+                                {data_1.dailyconfirmed}
                             </div>
                     </div>
 
@@ -38,7 +43,7 @@ function Box() {
                                 #Today Deceased
                         </div> 
                         <div className="data">
-                                {data.dailydeceased}
+                                {data_1.dailydeceased}
                             </div>
                     </div>
 
@@ -47,7 +52,7 @@ function Box() {
                                 #Today Recovered
                         </div> 
                         <div className="data">
-                                {data.dailyrecovered}
+                                {data_1.dailyrecovered}
                             </div>
                     </div>
 
@@ -56,7 +61,7 @@ function Box() {
                                 #Total Confirmed
                         </div> 
                         <div className="data">
-                                {data.totalconfirmed}
+                                {data_2.confirmed}
                             </div>
                     </div>
 
@@ -65,7 +70,7 @@ function Box() {
                                 #Total Deceased
                         </div> 
                         <div className="data">
-                                {data.totaldeceased}
+                                {data_2.deaths}
                             </div>
                     </div>
 
@@ -74,7 +79,7 @@ function Box() {
                                 #Total Recovered
                         </div> 
                         <div className="data">
-                               {data.totalrecovered}
+                               {data_2.recovered}
                             </div>
                     </div>
 
@@ -83,7 +88,7 @@ function Box() {
                                 #Last Update
                         </div> 
                         <div className="data">
-                                {data.date}
+                                {data_2.lastupdatedtime}
                             </div>  
                     </div>
         </ > 
