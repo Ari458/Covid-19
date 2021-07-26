@@ -88,7 +88,7 @@ const update= (e)=>{
 
             setdeltaconfirmed("# Today Confirmed : "+data_temp.statewise[i].deltaconfirmed);
             setdeltadeaths("#Today Deceased : "+data_temp.statewise[i].deltadeaths);
-            setdeltarecovered("Today Recovered : "+data_temp.statewise[i].deltarecovered);
+            setdeltarecovered("#Today Recovered : "+data_temp.statewise[i].deltarecovered);
 
             setlastupdatedtime("#Last Update : "+data_temp.statewise[i].lastupdatedtime);
         }
