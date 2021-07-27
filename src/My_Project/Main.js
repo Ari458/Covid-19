@@ -1,7 +1,7 @@
 import React from 'react';
 import Covid from './Covid';
 import State from './State';
-import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
+import { HashRouter as Router,Switch,Route,Link } from "react-router-dom";
 import './Covid.css';
 
 function Main() {
