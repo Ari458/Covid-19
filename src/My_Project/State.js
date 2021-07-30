@@ -2,44 +2,12 @@ import React ,{useEffect,useState} from 'react';
 import './State.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function State() {
 
-    // const url= "https://api.covid19india.org/data.json";
-
-    //     const xhr= (url)=>{
-    //         const request= new XMLHttpRequest();
-    //         request.open("GET",url);
-    //         request.send();
-    //     return request;
-    //     }
-
-    //     const getdata= ()=>{
-    //         const key= xhr(url);
-    //         const states=[];
-
-    //         key.onload= ()=>{
-    //             const result= JSON.parse(key.response);
-    //             const statewise= result.statewise;
-    //             const length= statewise.length;
-             
-    //         for(var i=1;i<= length-1;i++){
-    //             states[i]= result.statewise[i].state;
-    //         }
-    //     }
-    //         for(var i=1;i<= 37;i++){
-    //             return(
-    //                 <div>
-    //                     {states[i]}
-    //                 </div>
-    //             );
-    //         }
-    // }
-
-// getdata();
-
+const State = ()=>{
 
 const[data,setdata]= useState([]);
 const[data_temp,setdata_temp]= useState("");
+const [data_temp_2,setdata_temp_2]= useState("");
 
 const getCovidData= async()=>{
     try{
@@ -48,7 +16,19 @@ const getCovidData= async()=>{
         setdata(MyData.statewise);
         setdata_temp(MyData);
     }catch(err){
-            console.log(err);
+            prompt(err);
+    }
+    
+}
+
+
+const getCovidData_state= async()=>{
+    try{
+        const Response= await fetch('https://api.covid19india.org/v4/min/data.min.json');
+        const MyData=await Response.json();
+        setdata_temp_2(MyData);
+    }catch(err){
+           prompt(err);
     }
     
 }
@@ -56,10 +36,10 @@ const getCovidData= async()=>{
 
 useEffect(()=>{
     getCovidData();
+    getCovidData_state();
 },[]);
 
 
-const[active,setactive]= useState();
 const[confirmed,setconfirmed]= useState();
 const[deaths,setdeaths]= useState();
 const[recovered,setrecovered]= useState();
@@ -70,7 +50,7 @@ const[deltarecovered,setdeltarecovered]= useState();
 
 const[lastupdatedtime,setlastupdatedtime]= useState();
 
-const[]= useState();
+
 
 
 const update= (e)=>{
@@ -79,28 +59,22 @@ const update= (e)=>{
 
     for(i=0; i<=data.length-1; i++){
         if(data[i].state===state_value){
-            // currentStateDetails=data[i];
-            // setdetails(i);
-            setactive("# Total Active Cases : "+data_temp.statewise[i].active);
+            let x = "data_temp_2."+data_temp.statewise[i].statecode;
+            let stateToday=eval(x);
             setconfirmed("#Total Confirmed : "+data_temp.statewise[i].confirmed);
             setdeaths("#Total Deceased : "+data_temp.statewise[i].deaths);
             setrecovered("#Total Recovered : "+data_temp.statewise[i].recovered);
 
-            setdeltaconfirmed("# Today Confirmed : "+data_temp.statewise[i].deltaconfirmed);
-            setdeltadeaths("#Today Deceased : "+data_temp.statewise[i].deltadeaths);
-            setdeltarecovered("#Today Recovered : "+data_temp.statewise[i].deltarecovered);
+
+            setdeltaconfirmed("# Today Confirmed : "+stateToday.delta.confirmed);
+            setdeltadeaths("#Today Deceased : "+stateToday.delta.deceased);
+            setdeltarecovered("#Today Recovered : "+stateToday.delta.recovered);
+
 
             setlastupdatedtime("#Last Update : "+data_temp.statewise[i].lastupdatedtime);
         }
     }
 }
-
-
-
-
-
-
-
 
 
 
@@ -114,19 +88,12 @@ const update= (e)=>{
         
     });
 
-
-
-
-
-
-
-
     return (
         <>
             <div className="main-s">
                 <div className="line"></div>
                 <select className="container" onChange={(e)=>{update(e)}}>
-                    <option>Choose Your STATES</option>
+                    {/* <option>Choose Your STATES</option> */}
                     {output}
                 </select>
                 <span className="status">
@@ -136,8 +103,8 @@ const update= (e)=>{
                    <hr />
                    {deltarecovered}
                    <hr />
-                   {active}
-                   <hr />
+                   {/* {active}
+                   <hr /> */}
                    {confirmed}
                    <hr />
                    {deaths}
