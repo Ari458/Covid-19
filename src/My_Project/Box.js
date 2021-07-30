@@ -29,6 +29,8 @@ function Box() {
 
     return (
          < > 
+         <div className="break"></div>
+         <h1 className="tag">INDIA</h1>
                   <div className = "box color_1"> 
                         <div className = "head" > 
                                 #Today Confirmed

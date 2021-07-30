@@ -13,10 +13,10 @@ function Main() {
                     <b className="blink">🔴</b> 
                     LIVE 
                 </h6>
-                <h3 className="tracker">COVID-19 TRACKER INDIA</h3>
+                <h3><a href="index.html" className="tracker">COVID-19 TRACKER INDIA</a></h3>
                 <div className="link">
                     <Router>
-                    <Link to="/Covid" className="india">
+                    <Link to="/Covid-19" className="india">
                         <span>IN</span><span>D</span><span>IA</span>
                         </Link>
                          <span className="br">|</span> 

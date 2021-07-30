@@ -19,6 +19,21 @@
     text-decoration: none;
 }
 
+.india :nth-child(1)::selection{
+    background-color: rgb(37, 36, 36);
+    color: #e06919;
+}
+
+.india :nth-child(2)::selection{
+    background-color: rgb(37, 36, 36);
+    color: #ffffff;
+}
+
+.india :nth-child(3)::selection{
+    background-color: rgb(37, 36, 36);
+    color: #1cb80d;
+}
+
 
 .india :nth-child(1){
     color: #e06919;
@@ -36,6 +51,11 @@
     color: rgb(224, 227, 233);
     text-decoration: none;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.states::selection{
+    background-color: rgb(37, 36, 36);
+    color: goldenrod;
 }
 
 .states:focus{
@@ -105,6 +125,7 @@
 .tracker{
     display: inline;
     color: gainsboro;
+    text-decoration: none;
 }
 
 .tracker::selection {

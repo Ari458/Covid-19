@@ -50,9 +50,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top-left-radius: 20px;
     font-size: 30px;
-    box-shadow: 0px 0px 50px 10px rgba(0, 0, 0, 0.5);
     text-align: center;
 }
 
@@ -72,4 +70,24 @@
         box-shadow: none;
         
     }
+}
+
+
+.tag{
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 2px;
+    background-image: linear-gradient(rgb(224, 105, 25),#ffffff,#1cb80d);
+    color: black;
+    opacity: 0.5;
+}
+
+
+.break{
+    height: 10px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
 }
